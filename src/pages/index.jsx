@@ -1,17 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Head from "next/head";
-import Tab1 from "../components/tab/tab1";
 import Header from "../components/Header";
+import Link from "next/link";
 
-export default function Home() {
-  const tabArray = ["aaa", "bbb", "ccc", "ddd"];
-  const [tab, setTab] = useState(tabArray[0]);
-
-  const handleClickTab = (e) => {
-    console.log(e.target.innerHTML);
-    setTab(e.target.innerHTML);
-  };
-
+const Home = () => {
   return (
     <div>
       <Head>
@@ -22,12 +14,20 @@ export default function Home() {
 
       <Header />
 
-      <div className="mt-4 flex flex-col gap-2">
-        <Tab1 />
-        <hr className="w-2/3 mx-auto border-b-2 border-gray-600" />
-        <Tab1 />
-        <hr className="w-2/3 mx-auto border-b-2 border-gray-600" />
+      <div className="flex mt-5 mx-5 gap-3">
+        <Link href="/buttons">
+          <a className=" h-40 w-64 text-center leading-[10rem] border text-5xl text-gray-500 transition hover:text-blue-300 hover:border-blue-300  ">
+            Buttons
+          </a>
+        </Link>
+        <Link href="/tabs">
+          <a className=" h-40 w-64 text-center leading-[10rem] border text-5xl text-gray-500 transition hover:text-blue-300 hover:border-blue-300  ">
+            Tabs
+          </a>
+        </Link>
       </div>
     </div>
   );
-}
+};
+
+export default Home;
