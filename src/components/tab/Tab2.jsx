@@ -1,26 +1,74 @@
-import React, { useState } from "react";
-import Head from "next/head";
+import React, { useEffect, useState } from "react";
 
-const Tab1 = () => {
-  const tabArray = ["aaa", "bbb", "ccc", "ddd"];
+const Tab2 = (props) => {
+  const tabArray = props.tabArray;
   const [tab, setTab] = useState(tabArray[0]);
 
   const handleClickTab = (e) => {
-    console.log(e.target.innerHTML);
     setTab(e.target.innerHTML);
   };
 
+  const [displayContents, setDisplayContens] = useState();
+  const displayChange = () => {
+    switch (tab) {
+      case "aaa":
+        setDisplayContens(
+          <div>
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            <br />
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          </div>
+        );
+        break;
+
+      case "bbb":
+        setDisplayContens(
+          <div>
+            bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+            <br />
+            bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+          </div>
+        );
+        break;
+
+      case "ccc":
+        setDisplayContens(
+          <div>
+            cccccccccccccccccccccccccccccccccccccccccccccccccc
+            <br />
+            cccccccccccccccccccccccccccccccccccccccccccccccccc
+          </div>
+        );
+        break;
+      case "ddd":
+        setDisplayContens(
+          <div>
+            dddddddddddddddddddddddddddddddddddddddddddddddddd
+            <br />
+            dddddddddddddddddddddddddddddddddddddddddddddddddd
+          </div>
+        );
+        break;
+    }
+  };
+
+  useEffect(() => {
+    displayChange();
+    console.log(displayContents);
+  }, [tab]);
+
   return (
     <div>
-      <div className="h-[200px] w-screen">
-        <div className="mx-auto w-2/3 ">
-          <div className="border-b">
+      <div className="h-[200px] w-[600px] border rounded-md shadow-md">
+        <div className="mx-auto m-2 w-full ">
+          <div className="flex justify-center">
             {tabArray.map((tabName) => (
               <button
+                key={tabName}
                 className={
-                  tabName === tab
-                    ? "w-[70px] mr-1 text-lg hover:text-blue-300 transition text-blue-500  border-b-2 border-blue-500 "
-                    : "w-[70px] mr-1 text-lg  hover:text-blue-300 transition"
+                  tab === tabName
+                    ? "w-[70px] mr-1 rounded-3xl text-lg text-white  bg-gray-400  transition hover:opacity-80  "
+                    : "w-[70px] mr-1 rounded-3xl text-lg   transition active:opacity-70  hover:bg-gray-200  "
                 }
                 onClick={handleClickTab}
               >
@@ -28,30 +76,11 @@ const Tab1 = () => {
               </button>
             ))}
           </div>
-          <div className={"aaa" === tab ? "" : "hidden"}>
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            <br />
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          </div>
-          <div className={"bbb" === tab ? "" : "hidden"}>
-            bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-            <br />
-            bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-          </div>
-          <div className={"ccc" === tab ? "" : "hidden"}>
-            cccccccccccccccccccccccccccccccccccccccccccccccccc
-            <br />
-            cccccccccccccccccccccccccccccccccccccccccccccccccc
-          </div>
-          <div className={"ddd" === tab ? "" : "hidden"}>
-            dddddddddddddddddddddddddddddddddddddddddddddddddd
-            <br />
-            dddddddddddddddddddddddddddddddddddddddddddddddddd
-          </div>
+          <div className="w-full flex justify-center">{displayContents}</div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Tab1;
+export default Tab2;

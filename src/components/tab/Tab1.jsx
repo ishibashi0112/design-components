@@ -12,8 +12,8 @@ const Tab1 = () => {
 
   return (
     <div>
-      <div className="h-[200px] w-screen">
-        <div className="mx-auto w-2/3 ">
+      <div className="h-[200px] w-[600px]">
+        <div className="w-full ">
           <div className="border-b">
             {tabArray.map((tabName) => (
               <button
