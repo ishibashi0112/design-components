@@ -1,8 +1,8 @@
-import { comment } from "postcss";
 import React from "react";
 import Button1 from "../components/bottun/Button1";
 import Button2 from "../components/bottun/Button2";
 import Button3 from "../components/bottun/Button3";
+import Button4 from "../components/bottun/Button4";
 import Header from "../components/Header";
 
 const Buttons = () => {
@@ -10,6 +10,7 @@ const Buttons = () => {
     <Button1 />,
     <Button2>ボタン</Button2>,
     <Button3>ボタン</Button3>,
+    <Button4>ボタン</Button4>,
   ];
 
   return (
